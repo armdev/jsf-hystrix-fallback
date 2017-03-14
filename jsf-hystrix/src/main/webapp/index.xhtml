@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>Send Message</title>
+    </h:head>       
+
+    <f:view transient="false">
+        <h:form>
+            <p:layout  fullPage="true" style="min-width:400px;min-height:200px;">
+                <p:layoutUnit position="west" resizable="true" size="600" minSize="40" maxSize="600">
+                    <h3>Send Request - Ping, Pong, King, Kong</h3>
+                    <p:panel id="panel" style="width: 400px;" header="Message Effects" toggleable="true">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <p:outputLabel for="text" value="Type:" />
+                            <p:inputText id="text" value="#{messageOrientedBean.secretMessage}" required="true" />
+                            <h:outputText />
+                            <p:commandButton id="submit" value="SEND" actionListener="#{messageOrientedBean.sendMessage()}" update="messages"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:messages id="messages" closable="true" style="min-width:400px;min-height:200px;">
+                        <p:effect type="#{messageOrientedBean.effectName}" event="load" delay="700"/>
+                    </p:messages>
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:form>
+
+
+    </f:view>    
+</html>
+
